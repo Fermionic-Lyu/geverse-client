@@ -21,25 +21,25 @@ interface propsType {
 
 withDefaults(defineProps<propsType>(), {
   size: 'medium',
-  bold: false,
+  bold: false
 })
 </script>
 <style lang="scss" scoped>
 .gverseBtn {
   // TODO fill other size style
-  border: 2px solid rgb(var(--v-theme-inputBorderColor));
+  border: 2px solid var(--v-custom-inputBorderColor);
   &.medium {
     border-radius: 25px;
     width: 228px;
     height: 56px;
   }
   &:hover {
-    background: var(--v-gverseLoginBtnHoverBg);
+    background: var(--v-custom-gverseLoginBtnHoverBg);
     backdrop-filter: blur(50px);
-    box-shadow: var(--v-gverseLoginBtnHoverShadow);
+    box-shadow: var(--v-custom-gverseLoginBtnHoverShadow);
   }
   .btnText {
-    color: rgb(var(--v-theme-textColor));
+    color: var(--v-custom-textColor);
   }
 }
 </style>

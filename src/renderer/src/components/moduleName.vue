@@ -4,20 +4,19 @@
   </div>
 </template>
 <script lang="ts" setup>
-import { useTheme } from 'vuetify'
+import { useThemeStore } from '@/stroe/theme'
+const themeStore = useThemeStore()
 interface propsType {
   label: string
 }
 
-const theme = useTheme()
-
 withDefaults(defineProps<propsType>(), {
-  label: '',
+  label: ''
 })
 
 const currentThemeName = computed(() => {
-  // @ts-ignore
-  return theme.global.current.value.name
+  return themeStore.theme
+  // return theme.global.current.value.name
 })
 </script>
 <style lang="scss" scoped>

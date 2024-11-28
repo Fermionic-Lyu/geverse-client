@@ -9,7 +9,7 @@
         <div class="notice px-5 flex items-center cursor-pointer mr-16">
           <img class="mr-2" src="../assets/icons/noticeIcon.png" alt="" />
           <span class="text14Px line-clamp-1">
-            Last Day! Limited-Time Membership Offer Ends Today! 
+            Last Day! Limited-Time Membership Offer Ends Today!
           </span>
         </div>
         <div class="flex items-center gap-10">
@@ -23,9 +23,9 @@
             <menuPoint :top="-4" :left="34"></menuPoint>
           </div>
           <div
-            @click="router.push('/login')"
             class="avatar flex items-center justify-center cursor-pointer"
             :style="{ backgroundImage: `url(${avatarBg})` }"
+            @click="router.push('/login')"
           >
             <img src="../assets/images/avatar.png" alt="" />
             <div class="point"></div>
@@ -36,8 +36,10 @@
   </div>
 </template>
 <script lang="ts" setup>
-import { useTheme } from 'vuetify'
+// import { useTheme } from 'vuetify'
 import { useRouter } from 'vue-router'
+import { useThemeStore } from '@/stroe/theme'
+
 import searchInput from './searchInput.vue'
 import bellDark from '@/assets/icons/menu/bellDark.png'
 import bellLight from '@/assets/icons/menu/bellLight.png'
@@ -48,12 +50,11 @@ import menuPoint from './menuPoint.vue'
 import themeSelect from './themeSelect.vue'
 import avatarLightBorder from '@/assets/images/avatarLightBorder.png'
 import avatarDarkBorder from '@/assets/images/avatarDarkBorder.png'
-const theme = useTheme()
-const router = useRouter()
 
+const router = useRouter()
+const store = useThemeStore()
 const bellIcon = computed(() => {
-  // @ts-ignore
-  const themeName = theme.global.current.value.name
+  const themeName = store.theme
   if (themeName == 'customLight') {
     return bellLight
   }
@@ -64,8 +65,7 @@ const bellIcon = computed(() => {
 })
 
 const messagetIcon = computed(() => {
-  // @ts-ignore
-  const themeName = theme.global.current.value.name
+  const themeName = store.theme
   if (themeName == 'customLight') {
     return msgLight
   }
@@ -76,8 +76,7 @@ const messagetIcon = computed(() => {
 })
 
 const avatarBg = computed(() => {
-  // @ts-ignore
-  const themeName = theme.global.current.value.name
+  const themeName = store.theme
   if (themeName == 'customLight') {
     return avatarLightBorder
   }
@@ -102,11 +101,11 @@ const avatarBg = computed(() => {
   width: auto;
   background: #000000;
   color: #fff;
-  box-shadow: var(--v-noticeShadow);
+  box-shadow: var(--v-custom-noticeShadow);
   border-radius: 40px;
   &:hover {
-    background: var(--v-noticeBackgrounHover);
-    box-shadow: var(--v-noticeShadowHover);
+    background: var(--v-custom-noticeBackgrounHover);
+    box-shadow: var(--v-custom-noticeShadowHover);
   }
   img {
     width: 31px;

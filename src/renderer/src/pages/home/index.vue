@@ -1,30 +1,44 @@
-<script setup lang="ts">
-import { useRouter } from 'vue-router'
-
-const router = useRouter()
-
-const ipcHandle = () => {
-  // window.electron.ipcRenderer.send('ping')
-  router.push({ name: 'login' })
-}
-</script>
-
 <template>
-  <img alt="logo" class="logo" src="./assets/electron.svg" />
-  <div class="creator">Powered by electron-vite</div>
-  <div class="text">
-    Build an Electron app with
-    <span class="vue">Vue</span>
-    and
-    <span class="ts">TypeScript</span>
-  </div>
-  <p class="tip">Please try pressing <code>F12</code> to open the devTool</p>
-  <div class="actions">
-    <div class="action">
-      <a href="https://electron-vite.org/" target="_blank" rel="noreferrer">Documentation</a>
-    </div>
-    <div class="action">
-      <a target="_blank" rel="noreferrer" @click="ipcHandle">Send IPC</a>
+  <div class="w-full h-full">
+    <navBar></navBar>
+    <div class="flex py-12 px-20 mainContent overflow-hidden">
+      <menuComp class="mr-28" />
+      <div class="h-full flex-1 overflow-y-auto scrollContainer">
+        <topic></topic>
+        <div class="mt-14 grid grid-cols-2 gap-14">
+          <live />
+          <news />
+        </div>
+        <div class="mt-14 grid grid-cols-2 gap-14">
+          <live />
+          <news />
+        </div>
+        <div class="mt-14 grid grid-cols-2 gap-14">
+          <live />
+          <news />
+        </div>
+        <div class="mt-14 grid grid-cols-2 gap-14">
+          <live />
+          <news />
+        </div>
+        <div class="mt-14 grid grid-cols-2 gap-14">
+          <live />
+          <news />
+        </div>
+      </div>
     </div>
   </div>
 </template>
+
+<script lang="ts" setup>
+import navBar from '@/components/navBar.vue'
+import menuComp from '@/components/menu.vue'
+import topic from '@/components/home/topic.vue'
+import live from '@/components/home/live.vue'
+import news from '@/components/home/news.vue'
+</script>
+<style lang="scss" scoped>
+.mainContent {
+  height: calc(100% - 133px);
+}
+</style>

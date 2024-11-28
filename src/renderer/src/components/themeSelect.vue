@@ -1,69 +1,63 @@
 <template>
-  <v-menu
-    v-model="menu"
-    :close-on-content-click="false"
-    location="bottom center"
-    class="customMenu"
-  >
-    <template v-slot:activator="{ props }">
-      <div class="themeSelect cursor-pointer relative" v-bind="props">
-        <img class="w-full h-full" :src="themeSelectIcon" alt="" />
-        <menuPoint :top="-4" :left="32"></menuPoint>
-      </div>
-    </template>
-
-    <div class="themeSelectCard mt-4">
-      <div class="themeSelectedContent flex items-center justify-center gap-10">
-        <div
-          class="themeItem flex flex-col items-center justify-between cursor-pointer"
-          :class="themeName"
-          v-for="(item, index) in themeList"
-          :key="`theme-${index}`"
-          @click="toggleTheme(item.value)"
-        >
-          <div class="themeLayout m-0-auto flex items-center gap-3 p-2" :class="item.alias">
-            <div style="width: 7px" class="flex-shrink-0 h-full mod" :class="item.alias"></div>
-            <div class="flex-1 flex flex-col justify-between items-center h-full gap-2">
-              <div
-                class="flex-1 flex-shrink-0 mod w-full"
-                :class="item.alias"
-                style="height: 24px"
-              ></div>
-              <div class="flex w-full gap-2">
-                <div class="flex-1 mod" :class="item.alias" style="height: 24px"></div>
-                <div class="flex-1 mod" :class="item.alias" style="height: 24px"></div>
+  <a-dropdown placement="bottom">
+    <div class="themeSelect cursor-pointer relative">
+      <img class="w-full h-full" :src="themeSelectIcon" alt="" />
+      <menuPoint :top="-4" :left="32"></menuPoint>
+    </div>
+    <template #overlay>
+      <div class="themeSelectCard mt-4">
+        <div class="themeSelectedContent flex items-center justify-center gap-10">
+          <div
+            v-for="(item, index) in themeList"
+            :key="`theme-${index}`"
+            class="themeItem flex flex-col items-center justify-between cursor-pointer"
+            :class="themeName"
+            @click="toggleTheme(item.value)"
+          >
+            <div class="themeLayout m-0-auto flex items-center gap-3 p-2" :class="item.alias">
+              <div style="width: 7px" class="flex-shrink-0 h-full mod" :class="item.alias"></div>
+              <div class="flex-1 flex flex-col justify-between items-center h-full gap-2">
+                <div
+                  class="flex-1 flex-shrink-0 mod w-full"
+                  :class="item.alias"
+                  style="height: 24px"
+                ></div>
+                <div class="flex w-full gap-2">
+                  <div class="flex-1 mod" :class="item.alias" style="height: 24px"></div>
+                  <div class="flex-1 mod" :class="item.alias" style="height: 24px"></div>
+                </div>
               </div>
             </div>
-          </div>
-          <div class="themeDesc p-4 w-full flex items-center justify-between">
-            <span class="text14Px font-semibold">{{ item.label }}</span>
-            <div class="checkbox" :class="themeName === item.value ? 'checked' : ''"></div>
+            <div class="themeDesc p-4 w-full flex items-center justify-between">
+              <span class="text14Px font-semibold">{{ item.label }}</span>
+              <div class="checkbox" :class="themeName === item.value ? 'checked' : ''"></div>
+            </div>
           </div>
         </div>
       </div>
-    </div>
-  </v-menu>
+    </template>
+  </a-dropdown>
 </template>
 <script lang="ts" setup>
 import themeSelectDark from '@/assets/icons/menu/themeSelectDark.png'
 import themeSelectLight from '@/assets/icons/menu/themeSelectLight.png'
-import { useTheme } from 'vuetify'
+import { useThemeStore } from '@/stroe/theme'
+const store = useThemeStore()
+// import { useTheme } from 'vuetify'
 const menu = ref(false)
-const theme = useTheme()
 
 const themeList = ref([
   { label: 'Dark Mode', value: 'customDark', alias: 'dark' },
-  { label: 'Light Mode', value: 'customLight', alias: 'light' },
+  { label: 'Light Mode', value: 'customLight', alias: 'light' }
 ])
 
 const themeName = computed(() => {
-  // @ts-ignore
-  return theme.global.current.value.name
+  return store.theme
 })
 
 const themeSelectIcon = computed(() => {
-  // @ts-ignore
-  const themeName = theme.global.current.value.name
+  const themeName = store.theme
+  // const themeName = theme.global.current.value.name
   if (themeName == 'customLight') {
     return themeSelectLight
   }
@@ -73,13 +67,10 @@ const themeSelectIcon = computed(() => {
   return ''
 })
 
-const currentTheme = computed(() => theme.global.name.value)
-
 const toggleTheme = (selectName: string) => {
   menu.value = false
   if (themeName.value === selectName) return
-  localStorage.setItem('theme', selectName)
-  theme.global.name.value = selectName
+  store.changeTheme(selectName)
 }
 </script>
 <style lang="scss" scoped>
@@ -143,9 +134,9 @@ const toggleTheme = (selectName: string) => {
     background: #cacaca;
     border: 2px solid #000;
     &:hover {
-      border: 2px solid var(--v-menuPointBg);
+      border: 2px solid var(--v-custom-menuPointBg);
       .themeDesc {
-        border-top: 2px solid var(--v-menuPointBg);
+        border-top: 2px solid var(--v-custom-menuPointBg);
       }
     }
     .themeLayout {
@@ -161,7 +152,7 @@ const toggleTheme = (selectName: string) => {
       .mod {
         border: 1px solid #fff;
         &.dark {
-          background: var(--v-menuPointBg);
+          background: var(--v-custom-menuPointBg);
         }
         &.light {
           background: #ababab;
@@ -181,8 +172,8 @@ const toggleTheme = (selectName: string) => {
         border-radius: 50%;
         border: 1px solid #5e5e5e;
         &.checked {
-          background: var(--v-menuPointBg);
-          border: 1px solid var(--v-menuPointBg);
+          background: var(--v-custom-menuPointBg);
+          border: 1px solid var(--v-custom-menuPointBg);
         }
       }
     }

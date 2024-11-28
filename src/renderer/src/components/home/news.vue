@@ -15,23 +15,23 @@
             top: item.top || 'auto',
             left: item.left || 'auto',
             right: item.right || 'auto',
-            bottom: item.bottom || 'auto',
+            bottom: item.bottom || 'auto'
           }"
         ></div>
       </template>
       <moduleName label="GAMING NEWS" />
       <div class="newList homePageModuleScrollContainer mt-3">
         <div
-          class="newListItem line-clamp-1 text14Px"
           v-for="(item, index) in newsList"
           :key="`new-${index}`"
+          class="newListItem line-clamp-1 text14Px"
         >
           <span
             :class="[
               'newIndex mr-3',
               `newIndex-${currentThemeName}`,
               `newsIndex-${index + 1}`,
-              'font-extrabold',
+              'font-extrabold'
             ]"
             >{{ index + 1 }}</span
           >
@@ -43,11 +43,10 @@
 </template>
 <script lang="ts" setup>
 import moduleName from '../moduleName.vue'
-import { CONTAINER_CORNER_ICONS } from '@/const'
-import { useTheme } from 'vuetify'
-const theme = useTheme()
+import { CONTAINER_CORNER_ICONS } from '@/const/index'
+import { useThemeStore } from '@/stroe/theme'
 const corners = ref(CONTAINER_CORNER_ICONS)
-
+const themeStore = useThemeStore()
 const newsList = ref([
   'PlayStation Plus Extra subscribers now have a new day one game to look forward to in 2025',
   'New Sonic the Hedgehog Trademark Leaks Online',
@@ -58,16 +57,14 @@ const newsList = ref([
   'New Sonic the Hedgehog Trademark Leaks Online',
   `Switch Version of Game With 'Very Positive' Reviews Delayed Indefinitely`,
   'Hallmark Selling New Master Chief Holiday Ornament for Halo Fans',
-  'Honkai: Star Rail Leak Teases New Enemies in Fourth World',
+  'Honkai: Star Rail Leak Teases New Enemies in Fourth World'
 ])
 
 const currentThemeName = computed(() => {
-  // @ts-ignore
-  return theme.global.current.value.name
+  return themeStore.theme
 })
 const themeCls = computed(() => {
-  // @ts-ignore
-  return `news-${theme.global.current.value.name}`
+  return `news-${themeStore.theme}`
 })
 </script>
 <style lang="scss" scoped>
@@ -137,7 +134,7 @@ const themeCls = computed(() => {
         .newDesc {
           &:hover,
           &:visited {
-            color: rgb(var(--v-newsDescHoverColor));
+            color: var(--v-custom-newsDescHoverColor);
           }
         }
       }

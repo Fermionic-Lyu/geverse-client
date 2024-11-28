@@ -22,7 +22,7 @@ const showPwd = ref(false)
   box-shadow: 0px 0px 30px 9px #7c7c7c;
   height: 56px;
   border-radius: 28px;
-  border: 2px solid rgb(var(--v-theme-inputBorderColor));
+  border: 2px solid var(--v-custom-inputBorderColor);
   overflow: hidden;
   transform: translate(0.5px, 0);
   .togglePwdVisible {
@@ -37,7 +37,7 @@ const showPwd = ref(false)
 }
 .pwdInput {
   outline: none;
-  color: rgb(var(--v-theme-textColor));
+  color: var(--v-custom-textColor);
   &:hover,
   &:focus {
     background: linear-gradient(

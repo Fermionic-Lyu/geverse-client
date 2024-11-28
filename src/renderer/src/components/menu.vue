@@ -9,7 +9,7 @@
           'cursor-pointer relative',
           menu.name === route.path ? 'selected' : '',
           menu.cls,
-          themeCls,
+          themeCls
         ]"
       >
         <menuPoint v-if="menu.name === route.path" :top="pointTop(menu)" />
@@ -18,9 +18,10 @@
   </div>
 </template>
 <script lang="ts" setup>
-import { useTheme } from 'vuetify'
 import { useRoute } from 'vue-router'
 import menuPoint from './menuPoint.vue'
+import { useThemeStore } from '@/stroe/theme'
+const themeStore = useThemeStore()
 const menuList = ref([
   { cls: 'home', name: '/', menuPointDarkTop: 60, menuPointTop: 44 },
   { cls: 'icon1', menuPointDarkTop: 46, menuPointTop: 42 },
@@ -29,16 +30,14 @@ const menuList = ref([
   { cls: 'icon4', menuPointDarkTop: 58, menuPointTop: 42 },
   { cls: 'icon5', menuPointDarkTop: 52, menuPointTop: 38 },
   { cls: 'icon6', menuPointDarkTop: 38, menuPointTop: 30 },
-  { cls: 'icon7', menuPointDarkTop: 56, menuPointTop: 36 },
+  { cls: 'icon7', menuPointDarkTop: 56, menuPointTop: 36 }
 ])
 
 const route = useRoute()
 
-const theme = useTheme()
-
-const pointTop = (menu: { menuPointTop: any; menuPointDarkTop: any }) => {
-  // @ts-ignore
-  const themeName = theme.global.current.value.name
+const pointTop = (menu: { menuPointTop: number; menuPointDarkTop: number }) => {
+  const themeName = themeStore.theme
+  // const themeName = theme.global.current.value.name
   if (themeName == 'customLight') {
     return menu.menuPointTop
   }
@@ -49,8 +48,7 @@ const pointTop = (menu: { menuPointTop: any; menuPointDarkTop: any }) => {
 }
 
 const themeCls = computed(() => {
-  // @ts-ignore
-  return theme.global.current.value.name
+  return themeStore.theme
 })
 </script>
 <style lang="scss" scoped>
@@ -72,7 +70,7 @@ const themeCls = computed(() => {
   width: 105px;
   height: 845px;
   border-radius: 427px;
-  border: 2px solid var(--v-menuBorderColor);
+  border: 2px solid var(--v-custom-menuBorderColor);
   position: relative;
   box-shadow: 0px 0px 30px 1px #7c7c7c;
   .home {

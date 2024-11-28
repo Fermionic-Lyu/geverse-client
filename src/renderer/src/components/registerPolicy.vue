@@ -8,6 +8,6 @@
 <script lang="ts" setup></script>
 <style lang="scss" scoped>
 .policyText {
-  color: rgb(var(--v-theme-policyColor));
+  color: var(--v-custom-policyColor);
 }
 </style>

@@ -2,11 +2,10 @@
   <div class="topic w-full" :class="themeCls"></div>
 </template>
 <script lang="ts" setup>
-import { useTheme } from 'vuetify'
-const theme = useTheme()
+import { useThemeStore } from '@/stroe/theme'
+const themeStore = useThemeStore()
 const themeCls = computed(() => {
-  // @ts-ignore
-  return `topic-${theme.global.current.value.name}`
+  return `topic-${themeStore.theme}`
 })
 </script>
 <style scoped lang="scss">

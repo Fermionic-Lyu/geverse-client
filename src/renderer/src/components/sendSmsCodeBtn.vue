@@ -38,11 +38,11 @@ const clearTimer = () => {
 .sendSmsCodeBtn {
   width: 230px;
   height: 56px;
-  border: 2px solid rgb(var(--v-theme-inputBorderColor));
+  border: 2px solid var(--v-custom-inputBorderColor);
   border-radius: 28px;
-  color: rgb(var(--v-theme-textColor));
+  color: var(--v-custom-textColor);
   &:hover {
-    background: var(--v-sendSmsBtnBgColor);
+    background: var(--v-custom-sendSmsBtnBgColor);
   }
 }
 </style>

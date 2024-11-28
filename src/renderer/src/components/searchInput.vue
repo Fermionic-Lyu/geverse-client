@@ -17,7 +17,7 @@ interface propsType {
 }
 const props = withDefaults(defineProps<propsType>(), {
   placeholder: '',
-  value: '',
+  value: ''
 })
 
 const inputVal = ref(props?.value || '')
@@ -26,7 +26,7 @@ watch(
   () => props.value,
   (val) => {
     inputVal.value = val
-  },
+  }
 )
 </script>
 <style lang="scss" scoped>
@@ -34,7 +34,7 @@ watch(
   width: 405px;
   height: 50px;
   position: relative;
-  border: 2px solid rgba(var(--v-theme-inputBorderColor), 0.5);
+  border: 2px solid rgba(var(--v-custom-inputBorderColor), 0.5);
   overflow: hidden;
   transform: translate(0.5px, 0);
   border-radius: 25px;
@@ -53,7 +53,7 @@ watch(
 }
 .searchInput {
   outline: none;
-  color: rgb(var(--v-theme-textColor));
+  color: var(--v-custom-textColor);
   text-shadow: 0px 0px 5px #fff;
 }
 </style>

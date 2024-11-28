@@ -51,7 +51,7 @@ const router = useRouter()
 .login-form {
   width: 632px;
   &_desc {
-    color: rgb(var(--v-theme-welcomeColor));
+    color: var(--v-custom-welcomeColor);
   }
 }
 </style>

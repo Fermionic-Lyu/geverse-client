@@ -5,7 +5,7 @@
         'customCheckBox',
         'cursor-pointer',
         'flex items-center justify-center',
-        checked ? 'checked' : '',
+        checked ? 'checked' : ''
       ]"
     >
       <v-icon v-if="checked" class="checkIcon" icon="mdi-check" />
@@ -19,7 +19,7 @@ interface propsType {
 }
 
 withDefaults(defineProps<propsType>(), {
-  desc: '',
+  desc: ''
 })
 
 const emits = defineEmits(['checked'])
@@ -35,15 +35,15 @@ const changeCheck = () => {
 .customCheckBox {
   width: 33px;
   height: 33px;
-  border: 1px solid rgb(var(--v-theme-inputBorderColor));
+  border: 1px solid var(--v-custom-inputBorderColor);
   border-radius: 10px;
   &.checked {
-    background: var(--v-checkboxCheckedBg);
-    border: 1px solid var(--v-theme-checkboxBorderCheckedColor);
+    background: var(--v-custom-checkboxCheckedBg);
+    border: 1px solid var(--v-custom-checkboxBorderCheckedColor);
   }
   .checkIcon {
     font-size: 24px;
-    color: var(--v-checkboxCheckedIconColor);
+    color: var(--v-custom-checkboxCheckedIconColor);
   }
 }
 </style>

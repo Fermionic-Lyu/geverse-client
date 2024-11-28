@@ -50,7 +50,7 @@ watch(
 .normalInputContainer {
   position: relative;
   box-shadow: 0px 0px 30px 9px #7c7c7c;
-  border: 2px solid rgb(var(--v-theme-inputBorderColor));
+  border: 2px solid var(--v-custom-inputBorderColor);
   overflow: hidden;
   transform: translate(0.5px, 0);
   .search {
@@ -65,7 +65,7 @@ watch(
 }
 .normalInput {
   outline: none;
-  color: rgb(var(--v-theme-textColor));
+  color: var(--v-custom-textColor);
   &:hover,
   &:focus {
     background: linear-gradient(

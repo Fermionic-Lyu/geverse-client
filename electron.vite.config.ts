@@ -18,6 +18,13 @@ export default defineConfig({
         '@': resolve('src/renderer/src')
       }
     },
+    // css: {
+    //   preprocessorOptions: {
+    //     scss: {
+    //       additionalData: `@use "src/renderer/src/assets/scss/variable.scss" as *;`
+    //     }
+    //   }
+    // },
     plugins: [
       vue(),
       Components({

@@ -15,14 +15,14 @@
             top: item.top || 'auto',
             left: item.left || 'auto',
             right: item.right || 'auto',
-            bottom: item.bottom || 'auto',
+            bottom: item.bottom || 'auto'
           }"
         ></div>
       </template>
       <div class="flex items-center justify-between">
         <moduleName label="LIVE CHANNELS" />
         <v-menu location="center center">
-          <template v-slot:activator="{ props }">
+          <template #activator="{ props }">
             <div
               v-bind="props"
               class="selectLiveType cursor-pointer flex items-center gap-2 pr-3 pl-5 py-1 text14Px"
@@ -35,13 +35,13 @@
           <div :class="['liveTypeContent', `liveTypeContent-${currentThemeName}`]">
             <div class="liveTypeContentBox" :class="`liveTypeContentBox-${currentThemeName}`">
               <div
+                v-for="(item, index) in typeList"
+                :key="`type-${index}`"
                 :class="[
                   'liveTypeContentItem cursor-pointer text-center px-8',
                   'text14Px',
-                  item.value === selectLiveType ? 'selected' : '',
+                  item.value === selectLiveType ? 'selected' : ''
                 ]"
-                v-for="(item, index) in typeList"
-                :key="`type-${index}`"
                 @click="changeType(item)"
               >
                 {{ item.name }}
@@ -54,10 +54,10 @@
         <swiper
           :modules="swiperModules"
           :slides-per-view="2"
-          :slidesPerGroup="2"
-          watchOverflow
+          :slides-per-group="2"
+          watch-overflow
           :space-between="30"
-          loopFillGroupWithBlank
+          loop-fill-group-with-blank
           navigation
         >
           <swiper-slide>Slide 1</swiper-slide>
@@ -73,9 +73,8 @@
 </template>
 <script lang="ts" setup>
 import moduleName from '../moduleName.vue'
-import { CONTAINER_CORNER_ICONS } from '@/const'
-import { useTheme } from 'vuetify'
-// Import Swiper Vue.js components
+import { CONTAINER_CORNER_ICONS } from '@/const/index'
+import { useThemeStore } from '@/stroe/theme'
 import { Navigation } from 'swiper/modules'
 import { Swiper, SwiperSlide } from 'swiper/vue'
 
@@ -84,7 +83,7 @@ import 'swiper/css'
 import 'swiper/css/navigation'
 import 'swiper/css/pagination'
 import 'swiper/css/scrollbar'
-const theme = useTheme()
+const themeStore = useThemeStore()
 const corners = ref(CONTAINER_CORNER_ICONS)
 const swiperModules = ref([Navigation])
 const selectLiveType = ref('Most Popular')
@@ -92,16 +91,14 @@ const selectLiveType = ref('Most Popular')
 const typeList = ref([
   { name: 'Most Popular', value: 'Most Popular' },
   { name: 'Recently Started', value: 'Recently Started' },
-  { name: 'Scheduled Streams', value: 'Scheduled Streams' },
+  { name: 'Scheduled Streams', value: 'Scheduled Streams' }
 ])
 
 const currentThemeName = computed(() => {
-  // @ts-ignore
-  return theme.global.current.value.name
+  return themeStore.theme
 })
 const themeCls = computed(() => {
-  // @ts-ignore
-  return `live-${theme.global.current.value.name}`
+  return `live-${themeStore.theme}`
 })
 
 const changeType = (val: { name: string; value: string }) => {
@@ -151,9 +148,9 @@ const changeType = (val: { name: string; value: string }) => {
     z-index: 2;
     .selectLiveType {
       border-radius: 15px;
-      border: 1px solid rgb(var(--v-selectLiveTypeBorderColor));
+      border: 1px solid var(--v-custom-selectLiveTypeBorderColor);
       &:hover {
-        border-color: rgb(var(--v-selectLiveTypeBorderHoverColor));
+        border-color: var(--v-custom-selectLiveTypeBorderHoverColor);
       }
     }
   }
@@ -172,7 +169,7 @@ const changeType = (val: { name: string; value: string }) => {
     position: absolute;
     top: 0;
     left: 0;
-    background: var(--v-themeSelectCardBorder);
+    background: var(--v-custom-themeSelectCardBorder);
     border-radius: 17px;
   }
   &.liveTypeContent-customLight {
@@ -212,7 +209,7 @@ const changeType = (val: { name: string; value: string }) => {
     .liveTypeContentItem {
       height: 34px;
       line-height: 34px;
-      border-bottom: 1px solid rgb(var(--v-theme-inputBorderColor));
+      border-bottom: 1px solid var(--v-custom-inputBorderColor);
       &:first-child {
         border-top-left-radius: 17px;
         border-top-right-radius: 17px;

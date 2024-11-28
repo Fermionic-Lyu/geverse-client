@@ -9,6 +9,9 @@ declare module 'vue' {
   export interface GlobalComponents {
     AButton: typeof import('ant-design-vue/es')['Button']
     AConfigProvider: typeof import('ant-design-vue/es')['ConfigProvider']
+    ADropdown: typeof import('ant-design-vue/es')['Dropdown']
+    AMenu: typeof import('ant-design-vue/es')['Menu']
+    AMenuItem: typeof import('ant-design-vue/es')['MenuItem']
     Birth: typeof import('./src/components/birth.vue')['default']
     FadeInOut: typeof import('./src/components/fadeInOut.vue')['default']
     GverseCheckbox: typeof import('./src/components/gverseCheckbox.vue')['default']

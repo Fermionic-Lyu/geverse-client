@@ -22,8 +22,8 @@ const styleObj = computed(() => {
 .menuPoint {
   width: 10px;
   height: 10px;
-  background: var(--v-menuPointBg);
-  box-shadow: var(--v-menuPointShadow);
+  background: var(--v-custom-menuPointBg);
+  box-shadow: var(--v-custom-menuPointShadow);
   border-radius: 50%;
   left: 50%;
   top: 0;
