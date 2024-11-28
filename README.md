@@ -1,4 +1,4 @@
-# electron-app
+# Gverse client
 
 An Electron application with Vue and TypeScript
 
