@@ -1,26 +1,25 @@
 <script setup lang="ts">
-import Versions from './components/Versions.vue'
-
-const ipcHandle = () => window.electron.ipcRenderer.send('ping')
+import { RouterView } from 'vue-router'
+import { theme } from 'ant-design-vue'
 </script>
 
 <template>
-  <img alt="logo" class="logo" src="./assets/electron.svg" />
-  <div class="creator">Powered by electron-vite</div>
-  <div class="text">
-    Build an Electron app with
-    <span class="vue">Vue</span>
-    and
-    <span class="ts">TypeScript</span>
-  </div>
-  <p class="tip">Please try pressing <code>F12</code> to open the devTool</p>
-  <div class="actions">
-    <div class="action">
-      <a href="https://electron-vite.org/" target="_blank" rel="noreferrer">Documentation</a>
-    </div>
-    <div class="action">
-      <a target="_blank" rel="noreferrer" @click="ipcHandle">Send IPC</a>
-    </div>
-  </div>
-  <Versions />
+  <RouterView v-slot="{ Component }">
+    <Transition
+      appear
+      enter-active-class="animate__animated animate__fadeIn animate__faster"
+      leave-active-class="animate__animated animate__fadeOut animate__faster"
+      mode="out-in"
+    >
+      <KeepAlive>
+        <a-config-provider
+          :theme="{
+            algorithm: theme.darkAlgorithm
+          }"
+        >
+          <component :is="Component"></component>
+        </a-config-provider>
+      </KeepAlive>
+    </Transition>
+  </RouterView>
 </template>
