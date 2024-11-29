@@ -13,7 +13,7 @@
             Last Day! Limited-Time Membership Offer Ends Today!
           </span>
         </div>
-        <div class="flex items-center gap-10">
+        <div class="flex items-center gap-14">
           <themeSelect></themeSelect>
           <div class="bell cursor-pointer relative">
             <img class="w-full h-full" :src="bellIcon" alt="" />
@@ -37,7 +37,6 @@
   </div>
 </template>
 <script lang="ts" setup>
-// import { useTheme } from 'vuetify'
 import { useRouter } from 'vue-router'
 import { useThemeStore } from '@/stroe/theme'
 

@@ -63,6 +63,7 @@ const themeCls = computed(() => {
   background-repeat: no-repeat;
   background-position: center center;
   background-size: 100% 100%;
+  background-image: var(--v-custom-menuIcon);
 }
 .menu {
   padding: 70px 0px;

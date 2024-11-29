@@ -6,12 +6,8 @@
       borderRadius: `${height / 2}px`
     }"
   >
-    <div v-if="showSearchIcon" class="search">
-      <v-icon class="search-icon" icon="mdi-magnify" />
-    </div>
     <input
       class="normalInput px-6 w-full h-full cursor-pointer text14Px box-border"
-      :class="showSearchIcon ? 'pl-16' : ''"
       :placeholder="placeholder"
       :readonly="readonly"
       :value="inputVal"
@@ -23,14 +19,12 @@ import { ref, watch } from 'vue'
 
 interface propsType {
   // decide show search icon yes or not
-  showSearchIcon?: boolean
   placeholder?: string
   readonly?: boolean
   value?: string
   height?: number
 }
 const props = withDefaults(defineProps<propsType>(), {
-  showSearchIcon: false,
   placeholder: '',
   readonly: false,
   value: '',
@@ -62,10 +56,21 @@ watch(
       font-size: 28px;
     }
   }
+  &:hover {
+    .normalInput {
+      background: linear-gradient(
+        180deg,
+        rgba(255, 255, 255, 0.75) 0%,
+        rgba(252, 242, 254, 0.75) 54.72%,
+        rgba(255, 255, 255, 0.75) 100%
+      );
+    }
+  }
 }
 .normalInput {
   outline: none;
   color: var(--v-custom-textColor);
+  background: transparent;
   &:hover,
   &:focus {
     background: linear-gradient(

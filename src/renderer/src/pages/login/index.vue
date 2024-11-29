@@ -1,5 +1,5 @@
 <template>
-  <div class="w-full h-full flex flex-col items-center justify-center">
+  <div class="h-full flex flex-col items-center justify-center warpper">
     <loginOrRegisterTitle text="WElCOME BACK" />
     <div class="login-form grid grid-cols-1 gap-12">
       <div class="w-full">
@@ -22,7 +22,7 @@
         <gverseLoginBtn> Log In </gverseLoginBtn>
         <gverseLoginBtn @click="router.push('/')">
           <template #icon>
-            <v-icon size="x-large" icon="mdi-account-multiple" />
+            <UserOutlined class="text20Px" />
           </template>
           Guest Mode
         </gverseLoginBtn>
@@ -45,6 +45,7 @@ import normalInput from '@/components/normalInput.vue'
 import passwordInput from '@/components/passwordInput.vue'
 import gverseLoginBtn from '@/components/gverseLoginBtn.vue'
 import loginOrRegisterTitle from '@/components/loginOrRegisterTitle.vue'
+import { UserOutlined } from '@ant-design/icons-vue'
 const router = useRouter()
 </script>
 <style lang="scss" scoped>

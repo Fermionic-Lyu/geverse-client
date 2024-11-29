@@ -32,6 +32,9 @@ body.customLight {
     --v-custom-searchIconColor: #000;
     --v-custom-containerScrollBarBorder: 1px solid #a1a1a1;
     --v-custom-containerScrollBarBg: #b2b1b2;
+    --v-custom-menuIcon: url('../icons/menuIconLight.png');
+    --v-theme-eyesColor: #000;
+    --v-theme-eyesHoverColor: #000000
 }
 body.customDark {
   color: #FFFFFF;
@@ -67,5 +70,10 @@ body.customDark {
   --v-custom-searchIconColor: #c0c0c0;
   --v-custom-containerScrollBarBorder: 1px solid #545454;
   --v-custom-containerScrollBarBg: #402f51;
+  --v-custom-menuIcon: url('../icons/menuIcon.png');
+  --v-theme-eyesColor: #CECECE;
+  --v-theme-eyesHoverColor: #000000;
 }
+
+
 

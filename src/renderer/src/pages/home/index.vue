@@ -1,5 +1,5 @@
 <template>
-  <div class="w-full h-full">
+  <div class="warpper">
     <navBar></navBar>
     <div class="flex py-12 px-20 mainContent overflow-hidden">
       <menuComp class="mr-28" />

@@ -3,3 +3,12 @@
 body {
   user-select: none;
 }
+.warpper {
+  width: 1920px;
+  margin: 0 auto;
+}
+.hoverFF5A07 {
+  &:hover {
+    color: #ff5a07 !important;
+  }
+}

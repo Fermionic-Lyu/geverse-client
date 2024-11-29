@@ -20,22 +20,24 @@
         ></div>
       </template>
       <moduleName label="GAMING NEWS" />
-      <div class="newList homePageModuleScrollContainer mt-3">
-        <div
-          v-for="(item, index) in newsList"
-          :key="`new-${index}`"
-          class="newListItem line-clamp-1 text14Px"
-        >
-          <span
-            :class="[
-              'newIndex mr-3',
-              `newIndex-${currentThemeName}`,
-              `newsIndex-${index + 1}`,
-              'font-extrabold'
-            ]"
-            >{{ index + 1 }}</span
+      <div class="newList mt-3">
+        <div class="newsScrollContainer w-full h-full overflow-y-auto pr-4">
+          <div
+            v-for="(item, index) in newsList"
+            :key="`new-${index}`"
+            class="newListItem line-clamp-1 text14Px"
           >
-          <a class="newDesc text14Px underline cursor-pointer">{{ item }}</a>
+            <span
+              :class="[
+                'newIndex mr-3',
+                `newIndex-${currentThemeName}`,
+                `newsIndex-${index + 1}`,
+                'font-extrabold'
+              ]"
+              >{{ index + 1 }}</span
+            >
+            <a class="newDesc text14Px underline cursor-pointer">{{ item }}</a>
+          </div>
         </div>
       </div>
     </div>
@@ -68,6 +70,24 @@ const themeCls = computed(() => {
 })
 </script>
 <style lang="scss" scoped>
+.newsScrollContainer {
+  &::-webkit-scrollbar {
+    width: 9px;
+    padding-left: 10px;
+  }
+  &::-webkit-scrollbar-thumb:hover {
+    cursor: pointer;
+  }
+  &::-webkit-scrollbar-track {
+    border-radius: 4px;
+    background: transparent;
+  }
+  &::-webkit-scrollbar-thumb {
+    border: var(--v-custom-containerScrollBarBorder);
+    background: var(--v-custom-containerScrollBarBg);
+    border-radius: 4px;
+  }
+}
 .news {
   height: 357px;
   position: relative;
@@ -98,12 +118,11 @@ const themeCls = computed(() => {
     z-index: 2;
     .newList {
       height: calc(100% - 27px);
-      overflow-y: auto;
-      padding-right: 28px;
+      padding-top: 20px;
       .newListItem {
         margin-top: 28px;
         &:first-child {
-          margin-top: 30px;
+          margin-top: 0;
         }
         .newIndex {
           color: #a0a0a0;

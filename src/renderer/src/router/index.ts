@@ -7,7 +7,7 @@ const router = createRouter({
     // 设置首页
     {
       path: '/',
-      component: () => import('@/pages/home/index.vue')
+      component: () => import('@/pages/register/index.vue')
     },
     {
       name: 'login',

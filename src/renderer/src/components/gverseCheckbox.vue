@@ -8,12 +8,13 @@
         checked ? 'checked' : ''
       ]"
     >
-      <v-icon v-if="checked" class="checkIcon" icon="mdi-check" />
+      <CheckOutlined v-if="checked" class="checkIcon" />
     </div>
     <span class="desc text14Px">{{ desc }}</span>
   </div>
 </template>
 <script lang="ts" setup>
+import { CheckOutlined } from '@ant-design/icons-vue'
 interface propsType {
   desc: string
 }
@@ -42,7 +43,7 @@ const changeCheck = () => {
     border: 1px solid var(--v-custom-checkboxBorderCheckedColor);
   }
   .checkIcon {
-    font-size: 24px;
+    font-size: 18px;
     color: var(--v-custom-checkboxCheckedIconColor);
   }
 }

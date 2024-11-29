@@ -43,7 +43,6 @@ import themeSelectDark from '@/assets/icons/menu/themeSelectDark.png'
 import themeSelectLight from '@/assets/icons/menu/themeSelectLight.png'
 import { useThemeStore } from '@/stroe/theme'
 const store = useThemeStore()
-// import { useTheme } from 'vuetify'
 const menu = ref(false)
 
 const themeList = ref([

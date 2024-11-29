@@ -6,8 +6,8 @@ themeStore.changeTheme(themeStore.theme)
 </script>
 
 <template>
-  <div :class="['w-full h-full overflow-y-auto rootContainer']">
-    <div class="mainContainer">
+  <div :class="['w-full h-full rootContainer px-10']">
+    <div class="scrollContainer overflow-y-auto overflow-x-hidden w-full h-full">
       <RouterView v-slot="{ Component }">
         <Transition
           appear
@@ -26,24 +26,22 @@ themeStore.changeTheme(themeStore.theme)
 <style lang="scss" scoped>
 .rootContainer {
   background: var(--v-custom-background);
-  .mainContainer {
-    width: 1920px;
-    margin: 0 auto;
-  }
-  &::-webkit-scrollbar {
-    width: 16px;
-  }
-  &::-webkit-scrollbar-thumb:hover {
-    cursor: pointer;
-  }
-  &::-webkit-scrollbar-track {
-    border-radius: 8px;
-    background: transparent;
-  }
-  &::-webkit-scrollbar-thumb {
-    border: var(--v-custom-containerScrollBarBorder);
-    background: var(--v-custom-containerScrollBarBg);
-    border-radius: 8px;
+  .scrollContainer {
+    &::-webkit-scrollbar {
+      width: 16px;
+    }
+    &::-webkit-scrollbar-thumb:hover {
+      cursor: pointer;
+    }
+    &::-webkit-scrollbar-track {
+      border-radius: 8px;
+      background: transparent;
+    }
+    &::-webkit-scrollbar-thumb {
+      border: var(--v-custom-containerScrollBarBorder);
+      background: var(--v-custom-containerScrollBarBg);
+      border-radius: 8px;
+    }
   }
 }
 </style>
