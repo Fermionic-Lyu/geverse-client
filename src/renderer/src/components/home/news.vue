@@ -1,6 +1,6 @@
 <template>
   <div class="news" :class="themeCls">
-    <div class="content p-8">
+    <div class="content p-14">
       <template v-if="currentThemeName === 'customDark'">
         <div
           v-for="(item, index) in corners"

@@ -30,5 +30,20 @@ themeStore.changeTheme(themeStore.theme)
     width: 1920px;
     margin: 0 auto;
   }
+  &::-webkit-scrollbar {
+    width: 16px;
+  }
+  &::-webkit-scrollbar-thumb:hover {
+    cursor: pointer;
+  }
+  &::-webkit-scrollbar-track {
+    border-radius: 8px;
+    background: transparent;
+  }
+  &::-webkit-scrollbar-thumb {
+    border: var(--v-custom-containerScrollBarBorder);
+    background: var(--v-custom-containerScrollBarBg);
+    border-radius: 8px;
+  }
 }
 </style>

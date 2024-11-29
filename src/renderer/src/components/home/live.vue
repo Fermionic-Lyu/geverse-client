@@ -1,6 +1,6 @@
 <template>
   <div class="live" :class="themeCls">
-    <div class="content p-8">
+    <div class="content p-14">
       <template v-if="currentThemeName === 'customDark'">
         <div
           v-for="(item, index) in corners"
@@ -21,34 +21,32 @@
       </template>
       <div class="flex items-center justify-between">
         <moduleName label="LIVE CHANNELS" />
-        <v-menu location="center center">
-          <template #activator="{ props }">
-            <div
-              v-bind="props"
-              class="selectLiveType cursor-pointer flex items-center gap-2 pr-3 pl-5 py-1 text14Px"
-            >
-              <span>{{ selectLiveType }}</span>
-              <v-icon icon="mdi-chevron-down"></v-icon>
-            </div>
-          </template>
-
-          <div :class="['liveTypeContent', `liveTypeContent-${currentThemeName}`]">
-            <div class="liveTypeContentBox" :class="`liveTypeContentBox-${currentThemeName}`">
-              <div
-                v-for="(item, index) in typeList"
-                :key="`type-${index}`"
-                :class="[
-                  'liveTypeContentItem cursor-pointer text-center px-8',
-                  'text14Px',
-                  item.value === selectLiveType ? 'selected' : ''
-                ]"
-                @click="changeType(item)"
-              >
-                {{ item.name }}
+        <a-dropdown placement="bottom" :trigger="['click']">
+          <div
+            class="selectLiveType cursor-pointer flex items-center gap-3 pr-3 pl-5 py-1 text14Px"
+          >
+            <span>{{ selectLiveType }}</span>
+            <img class="arrowdown" src="../../assets/icons/arrowDown.png" alt="" />
+          </div>
+          <template #overlay>
+            <div :class="['liveTypeContent', `liveTypeContent-${currentThemeName}`]">
+              <div class="liveTypeContentBox" :class="`liveTypeContentBox-${currentThemeName}`">
+                <div
+                  v-for="(item, index) in typeList"
+                  :key="`type-${index}`"
+                  :class="[
+                    'liveTypeContentItem cursor-pointer text-center px-8',
+                    'text14Px',
+                    item.value === selectLiveType ? 'selected' : ''
+                  ]"
+                  @click="changeType(item)"
+                >
+                  {{ item.name }}
+                </div>
               </div>
             </div>
-          </div>
-        </v-menu>
+          </template>
+        </a-dropdown>
       </div>
       <div class="mt-6">
         <swiper
@@ -77,7 +75,6 @@ import { CONTAINER_CORNER_ICONS } from '@/const/index'
 import { useThemeStore } from '@/stroe/theme'
 import { Navigation } from 'swiper/modules'
 import { Swiper, SwiperSlide } from 'swiper/vue'
-
 // Import Swiper styles
 import 'swiper/css'
 import 'swiper/css/navigation'
@@ -107,6 +104,10 @@ const changeType = (val: { name: string; value: string }) => {
 }
 </script>
 <style lang="scss" scoped>
+.arrowdown {
+  width: 12px;
+  height: 6px;
+}
 :deep(.v-slide-group__next),
 :deep(.v-slide-group__prev) {
   width: 25px;
