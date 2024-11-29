@@ -1,5 +1,6 @@
 <template>
   <div class="flex flex-shrink-0 items-center justify-between flex-nowrap pt-12 px-20 sticky">
+    <!-- style="top: 0; z-index: 4" -->
     <div class="logo flex items-center justify-center mr-28 flex-shrink-0">
       <img src="@/assets/images/logo.png" alt="" />
     </div>

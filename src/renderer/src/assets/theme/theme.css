@@ -1,9 +1,11 @@
-.rootContainer.customLight {
+body.customLight {
+    color: #000;
     --v-custom-background: #CACACA;
     --v-custom-welcomeColor: #000000;
     --v-custom-textColor: #000000;
     --v-custom-textColorReversal: #000000;
     --v-custom-inputBorderColor: #000000;
+    --v-custom-searchInputBorderColor: rgba(0,0,0,1);
     --v-custom-checkboxBorderCheckedColor: rgb(0,0,0);
     --v-custom-surface: #CACACA;
     --v-custom-gverseLoginBtnHoverBg: rgb(255,255,255);
@@ -26,13 +28,17 @@
     --v-custom-newsDescHoverColor: #4581C3;
     --v-custom-selectLiveTypeBorderColor: #A6A6A6;
     --v-custom-selectLiveTypeBorderHoverColor: #000000;
+    --v-custom-themeSelectedContentBg: #cacaca;
+    --v-custom-searchIconColor: #000;
 }
-.rootContainer.customDark {
-  --v-custom-background: #000;
+body.customDark {
+  color: #FFFFFF;
+  --v-custom-background: linear-gradient(180deg, #140018 0%, #100020 29.5%, #09000E 75.07%, #0F0022 95%);
   --v-custom-welcomeColor: #ffffff;
   --v-custom-textColor: #ffffff;
   --v-custom-textColorReversal: #000000;
   --v-custom-inputBorderColor: #ffffff;
+  --v-custom-searchInputBorderColor: rgba(255,255,255, 0.5);
   --v-custom-checkboxBorderCheckedColor: rgba(0,0,0,0);
   --v-custom-surface: #1D003A;
   --v-custom-gverseLoginBtnHoverBg: linear-gradient(268.27deg, #2e004f 0%, #4827ab 48.78%, #41005a 95.58%);
@@ -54,6 +60,8 @@
   --v-custom-themeSelectCardBorder: linear-gradient(to right bottom, #9747ff, #3d71da, #8746b3, #6d38ff);
   --v-custom-newsDescHoverColor: #D9CAEE;
   --v-custom-selectLiveTypeBorderColor: #b0b0b0;
-  --v-custom-selectLiveTypeBorderHoverColor: #ffffff
+  --v-custom-selectLiveTypeBorderHoverColor: #ffffff;
+  --v-custom-themeSelectedContentBg: #13001a;
+  --v-custom-searchIconColor: #c0c0c0;
 }
 

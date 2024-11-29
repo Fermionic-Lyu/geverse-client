@@ -11,6 +11,7 @@ export const useThemeStore = defineStore('theme', {
     changeTheme(data: string) {
       //修改方法
       this.theme = data
+      document.body.className = `w-full h-full ${data}`
     }
   },
   persist: true

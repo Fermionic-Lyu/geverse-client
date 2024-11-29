@@ -23,6 +23,7 @@
     "make": "electron-forge make"
   },
   "dependencies": {
+    "@ant-design/icons-vue": "^7.0.1",
     "@electron-toolkit/preload": "^3.0.0",
     "@electron-toolkit/utils": "^3.0.0",
     "ant-design-vue": "^4.2.6",

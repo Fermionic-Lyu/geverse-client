@@ -2,10 +2,11 @@
 import { RouterView } from 'vue-router'
 import { useThemeStore } from './stroe/theme'
 const themeStore = useThemeStore()
+themeStore.changeTheme(themeStore.theme)
 </script>
 
 <template>
-  <div :class="[themeStore.theme, 'w-full h-full overflow-y-auto rootContainer']">
+  <div :class="['w-full h-full overflow-y-auto rootContainer']">
     <div class="mainContainer">
       <RouterView v-slot="{ Component }">
         <Transition

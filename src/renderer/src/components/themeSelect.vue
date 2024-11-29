@@ -1,11 +1,11 @@
 <template>
-  <a-dropdown placement="bottom">
+  <a-dropdown placement="bottom" :trigger="['click']">
     <div class="themeSelect cursor-pointer relative">
       <img class="w-full h-full" :src="themeSelectIcon" alt="" />
       <menuPoint :top="-4" :left="32"></menuPoint>
     </div>
     <template #overlay>
-      <div class="themeSelectCard mt-4">
+      <div class="themeSelectCard mt-6 p-6">
         <div class="themeSelectedContent flex items-center justify-center gap-10">
           <div
             v-for="(item, index) in themeList"
@@ -78,7 +78,36 @@ const toggleTheme = (selectName: string) => {
   width: 27px;
   height: 31px;
 }
-
+.themeSelectCard {
+  width: 440px !important;
+  height: 207px !important;
+  position: relative;
+  border-radius: 10px;
+  display: block;
+  z-index: 1;
+  padding: 3px;
+  box-sizing: border-box;
+  overflow: hidden;
+  background: #13001a;
+  &::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    z-index: 2;
+    background: var(--v-custom-themeSelectCardBorder);
+    background-size: 100%;
+  }
+  .themeSelectedContent {
+    position: relative;
+    z-index: 2;
+    height: 100%;
+    border-radius: 8px;
+    background: var(--v-custom-themeSelectedContentBg);
+  }
+}
 .themeItem {
   width: 165px;
   height: 133px;

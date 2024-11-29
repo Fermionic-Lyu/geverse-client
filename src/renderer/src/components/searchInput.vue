@@ -1,16 +1,17 @@
 <template>
   <div class="w-full searchInputContainer box-border">
     <div class="search">
-      <v-icon class="search-icon" icon="mdi-magnify" />
+      <SearchOutlined class="search-icon" />
     </div>
     <input
-      class="searchInput px-6 w-full h-full cursor-pointer text14Px box-border pl-16"
+      class="searchInput px-6 w-full h-full cursor-pointer text14Px box-border pl-20"
       :placeholder="placeholder"
       :value="inputVal"
     />
   </div>
 </template>
 <script lang="ts" setup>
+import { SearchOutlined } from '@ant-design/icons-vue'
 interface propsType {
   placeholder?: string
   value?: string
@@ -34,7 +35,7 @@ watch(
   width: 405px;
   height: 50px;
   position: relative;
-  border: 2px solid rgba(var(--v-custom-inputBorderColor), 0.5);
+  border: 2px solid var(--v-custom-searchInputBorderColor);
   overflow: hidden;
   transform: translate(0.5px, 0);
   border-radius: 25px;
@@ -46,12 +47,14 @@ watch(
     top: 50%;
     transform: translateY(-50%);
     &-icon {
-      font-size: 28px;
-      opacity: 0.5;
+      font-size: 22px;
+      // opacity: 0.5;
+      color: var(--v-custom-searchIconColor);
     }
   }
 }
 .searchInput {
+  background: transparent;
   outline: none;
   color: var(--v-custom-textColor);
   text-shadow: 0px 0px 5px #fff;
