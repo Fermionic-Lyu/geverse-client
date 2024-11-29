@@ -20,7 +20,7 @@
     <div class="login-form">
       <div class="w-full mt-20 flex items-center justify-between">
         <gverseLoginBtn> Log In </gverseLoginBtn>
-        <gverseLoginBtn @click="router.push('/')">
+        <gverseLoginBtn @click="guestMode">
           <template #icon>
             <UserOutlined class="text20Px" />
           </template>
@@ -46,7 +46,13 @@ import passwordInput from '@/components/passwordInput.vue'
 import gverseLoginBtn from '@/components/gverseLoginBtn.vue'
 import loginOrRegisterTitle from '@/components/loginOrRegisterTitle.vue'
 import { UserOutlined } from '@ant-design/icons-vue'
+import { useAuthStore } from '@/stroe/auth'
 const router = useRouter()
+const authStore = useAuthStore()
+const guestMode = () => {
+  authStore.uploadGuestMode(true)
+  router.push('/')
+}
 </script>
 <style lang="scss" scoped>
 .login-form {

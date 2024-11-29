@@ -1,4 +1,5 @@
 import { createRouter, createWebHashHistory } from 'vue-router'
+import { useAuthStore } from '@/stroe/auth'
 
 const router = createRouter({
   //  hash 模式。
@@ -7,14 +8,31 @@ const router = createRouter({
     // 设置首页
     {
       path: '/',
-      component: () => import('@/pages/register/index.vue')
+      meta: {
+        needLogin: true
+      },
+      component: () => import('@/pages/home/index.vue')
     },
     {
       name: 'login',
       path: '/login',
       component: () => import('@/pages/login/index.vue')
+    },
+    {
+      name: 'register',
+      path: '/register',
+      component: () => import('@/pages/register/index.vue')
     }
   ]
+})
+
+router.beforeEach((_to, _from, next) => {
+  const authStore = useAuthStore()
+  if (!authStore.token && _to?.meta?.needLogin && !authStore.guestMode) {
+    next({ name: 'login' })
+    return
+  }
+  next()
 })
 
 export default router
