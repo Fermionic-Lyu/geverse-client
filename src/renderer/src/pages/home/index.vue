@@ -9,22 +9,6 @@
           <live />
           <news />
         </div>
-        <div class="mt-14 grid grid-cols-2 gap-14">
-          <live />
-          <news />
-        </div>
-        <div class="mt-14 grid grid-cols-2 gap-14">
-          <live />
-          <news />
-        </div>
-        <div class="mt-14 grid grid-cols-2 gap-14">
-          <live />
-          <news />
-        </div>
-        <div class="mt-14 grid grid-cols-2 gap-14">
-          <live />
-          <news />
-        </div>
       </div>
     </div>
   </div>
