@@ -1,5 +1,5 @@
 <template>
-  <a-dropdown placement="bottom" :trigger="['click']">
+  <a-dropdown placement="bottom">
     <div class="themeSelect cursor-pointer relative">
       <img class="w-full h-full" :src="themeSelectIcon" alt="" />
       <menuPoint :top="-4" :left="32"></menuPoint>

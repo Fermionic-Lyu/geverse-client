@@ -21,7 +21,7 @@
       </template>
       <div class="flex items-center justify-between">
         <moduleName label="LIVE CHANNELS" />
-        <a-dropdown placement="bottom" :trigger="['click']">
+        <a-dropdown placement="bottom">
           <div
             class="selectLiveType cursor-pointer flex items-center gap-3 pr-3 pl-5 py-1 text14Px"
           >
