@@ -37,10 +37,16 @@ $ npm run build:linux
 
 主题样式变量定义全部都在src\renderer\src\assets\theme\theme.css中
 
+### vue代码
+
+代码都在src\renderer\src中，标准vue目录结构
+
 ### 目前需要解决的问题
 
-1、邮箱、手机注册需要填写生日，那部分功能需要补全(birth.vue组件);
+1、邮箱、手机注册需要填写生日，那部分UI需要补全(birth.vue组件);
 
 2、首页live模块、topic模块需要补全;
 
-3、antdv的dropdown因滚动条问题导致定位不准需要解决;
+3、antdv dropdown组件定位不准需要解决(怀疑和滚动条有关、可能也和布局方式有关);
+
+4、所有页面的逻辑都没写，包括登录注册等
