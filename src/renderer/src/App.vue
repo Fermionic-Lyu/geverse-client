@@ -1,6 +1,6 @@
 <script setup lang="ts">
 import { RouterView } from 'vue-router'
-import { useThemeStore } from './stroe/theme'
+import { useThemeStore } from './store/theme'
 const themeStore = useThemeStore()
 themeStore.changeTheme(themeStore.theme)
 </script>
@@ -16,7 +16,7 @@ themeStore.changeTheme(themeStore.theme)
           mode="out-in"
         >
           <KeepAlive>
-            <component :is="Component"></component>
+            <component :is="Component" />
           </KeepAlive>
         </Transition>
       </RouterView>

@@ -38,7 +38,7 @@
 </template>
 <script lang="ts" setup>
 import { useRouter } from 'vue-router'
-import { useThemeStore } from '@/stroe/theme'
+import { useThemeStore } from '@/store/theme'
 
 import searchInput from './searchInput.vue'
 import bellDark from '@/assets/icons/menu/bellDark.png'

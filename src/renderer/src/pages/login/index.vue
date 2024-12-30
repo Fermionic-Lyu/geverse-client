@@ -46,7 +46,7 @@ import passwordInput from '@/components/passwordInput.vue'
 import gverseLoginBtn from '@/components/gverseLoginBtn.vue'
 import loginOrRegisterTitle from '@/components/loginOrRegisterTitle.vue'
 import { UserOutlined } from '@ant-design/icons-vue'
-import { useAuthStore } from '@/stroe/auth'
+import { useAuthStore } from '@/store/auth'
 const router = useRouter()
 const authStore = useAuthStore()
 const guestMode = () => {

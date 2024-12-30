@@ -46,7 +46,7 @@
 <script lang="ts" setup>
 import moduleName from '../moduleName.vue'
 import { CONTAINER_CORNER_ICONS } from '@/const/index'
-import { useThemeStore } from '@/stroe/theme'
+import { useThemeStore } from '@/store/theme'
 const corners = ref(CONTAINER_CORNER_ICONS)
 const themeStore = useThemeStore()
 const newsList = ref([

@@ -48,23 +48,32 @@
           </template>
         </a-dropdown>
       </div>
-      <div class="mt-6">
+      <div class="swiperWrapper flex flex-row items-center mt-14">
+        <left-outlined
+          class="navigationButton cursor-pointer mr-6"
+          @click="swiperRef?.slidePrev()"
+        />
         <swiper
           :modules="swiperModules"
           :slides-per-view="2"
           :slides-per-group="2"
           watch-overflow
-          :space-between="30"
           loop-fill-group-with-blank
-          navigation
+          :space-between="`60px`"
+          @swiper="onSwiper"
         >
-          <swiper-slide>Slide 1</swiper-slide>
-          <swiper-slide>Slide 2</swiper-slide>
-          <swiper-slide>Slide 3</swiper-slide>
-          <swiper-slide>Slide 4</swiper-slide>
-          <swiper-slide>Slide 5</swiper-slide>
-          <swiper-slide>Slide 6</swiper-slide>
+          <swiper-slide v-for="(item, index) in channelList" :key="`channel-${index}`">
+            <liveChannel
+              :channel-name="item.channelName"
+              :audiences="item.audiences"
+              :owner="item.owner"
+            />
+          </swiper-slide>
         </swiper>
+        <right-outlined
+          class="navigationButton cursor-pointer ml-6"
+          @click="swiperRef?.slideNext()"
+        />
       </div>
     </div>
   </div>
@@ -72,9 +81,12 @@
 <script lang="ts" setup>
 import moduleName from '../moduleName.vue'
 import { CONTAINER_CORNER_ICONS } from '@/const/index'
-import { useThemeStore } from '@/stroe/theme'
+import { useThemeStore } from '@/store/theme'
 import { Navigation } from 'swiper/modules'
 import { Swiper, SwiperSlide } from 'swiper/vue'
+import { Swiper as SwiperType } from 'swiper/types'
+import { LeftOutlined, RightOutlined } from '@ant-design/icons-vue'
+import liveChannel from '../liveChannel.vue'
 // Import Swiper styles
 import 'swiper/css'
 import 'swiper/css/navigation'
@@ -91,6 +103,13 @@ const typeList = ref([
   { name: 'Scheduled Streams', value: 'Scheduled Streams' }
 ])
 
+const channelList = ref([
+  { channelName: "Ryoko's Room", audiences: 100, owner: 'Justin' },
+  { channelName: "Sakeshi's Room", audiences: 202, owner: 'Andy' },
+  { channelName: "Meowmeow's Room", audiences: 402, owner: 'Emily' },
+  { channelName: "Animal's Room", audiences: 302, owner: 'Racoon' }
+])
+
 const currentThemeName = computed(() => {
   return themeStore.theme
 })
@@ -102,21 +121,30 @@ const changeType = (val: { name: string; value: string }) => {
   const { value } = val
   selectLiveType.value = value
 }
+
+const swiperRef = ref<SwiperType | null>(null)
+
+const onSwiper = (swiper: SwiperType) => {
+  swiperRef.value = swiper
+}
 </script>
 <style lang="scss" scoped>
 .arrowdown {
   width: 12px;
   height: 6px;
 }
+
 :deep(.v-slide-group__next),
 :deep(.v-slide-group__prev) {
   width: 25px;
   min-width: auto;
   font-size: 50px;
 }
+
 .live {
   height: 357px;
   position: relative;
+
   &::after {
     filter: blur(2px);
     display: inline-block;
@@ -135,6 +163,7 @@ const changeType = (val: { name: string; value: string }) => {
     border: 2px solid #fff;
     border-radius: 40px;
   }
+
   &.live-customLight {
     &::after {
       border: 2px solid #000;
@@ -142,25 +171,30 @@ const changeType = (val: { name: string; value: string }) => {
       background: #cacaca;
     }
   }
+
   .content {
     width: 100%;
     height: 100%;
     position: relative;
     z-index: 2;
+
     .selectLiveType {
       border-radius: 15px;
       border: 1px solid var(--v-custom-selectLiveTypeBorderColor);
+
       &:hover {
         border-color: var(--v-custom-selectLiveTypeBorderHoverColor);
       }
     }
   }
 }
+
 .liveTypeContent {
   min-width: 155px;
   position: relative;
   z-index: 3;
   padding: 2px;
+
   &::after {
     filter: blur(2px);
     display: inline-block;
@@ -173,6 +207,7 @@ const changeType = (val: { name: string; value: string }) => {
     background: var(--v-custom-themeSelectCardBorder);
     border-radius: 17px;
   }
+
   &.liveTypeContent-customLight {
     &::after {
       border: 2px solid #000;
@@ -180,26 +215,33 @@ const changeType = (val: { name: string; value: string }) => {
       background: #cacaca;
     }
   }
+
   .liveTypeContentBox {
     width: 100%;
     height: 100%;
     position: relative;
     z-index: 2;
     border-radius: 17px;
+
     &.liveTypeContentBox-customDark {
       background: #0d0022;
+
       .liveTypeContentItem {
         color: #fff;
+
         &:hover,
         &.selected {
           background: #351262;
         }
       }
     }
+
     &.liveTypeContentBox-customLight {
       background: #cacaca;
+
       .liveTypeContentItem {
         color: #000;
+
         &:hover,
         &.selected {
           color: #fff;
@@ -207,14 +249,17 @@ const changeType = (val: { name: string; value: string }) => {
         }
       }
     }
+
     .liveTypeContentItem {
       height: 34px;
       line-height: 34px;
       border-bottom: 1px solid var(--v-custom-inputBorderColor);
+
       &:first-child {
         border-top-left-radius: 17px;
         border-top-right-radius: 17px;
       }
+
       &:last-child {
         border-bottom-left-radius: 17px;
         border-bottom-right-radius: 17px;
@@ -226,5 +271,10 @@ const changeType = (val: { name: string; value: string }) => {
 
 .liveItem {
   border-radius: 20px;
+}
+
+.navigationButton {
+  font-size: 50px;
+  color: #777777;
 }
 </style>

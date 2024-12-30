@@ -20,7 +20,7 @@
 <script lang="ts" setup>
 import { useRoute } from 'vue-router'
 import menuPoint from './menuPoint.vue'
-import { useThemeStore } from '@/stroe/theme'
+import { useThemeStore } from '@/store/theme'
 const themeStore = useThemeStore()
 const menuList = ref([
   { cls: 'home', name: '/', menuPointDarkTop: 60, menuPointTop: 44 },

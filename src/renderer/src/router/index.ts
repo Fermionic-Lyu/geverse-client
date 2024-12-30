@@ -1,5 +1,5 @@
 import { createRouter, createWebHashHistory } from 'vue-router'
-import { useAuthStore } from '@/stroe/auth'
+import { useAuthStore } from '@/store/auth'
 
 const router = createRouter({
   //  hash 模式。

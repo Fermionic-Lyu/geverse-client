@@ -7,17 +7,14 @@ export {}
 /* prettier-ignore */
 declare module 'vue' {
   export interface GlobalComponents {
-    AButton: typeof import('ant-design-vue/es')['Button']
-    AConfigProvider: typeof import('ant-design-vue/es')['ConfigProvider']
-    ADatePicker: typeof import('ant-design-vue/es')['DatePicker']
+    AAvatar: typeof import('ant-design-vue/es')['Avatar']
     ADropdown: typeof import('ant-design-vue/es')['Dropdown']
-    AMenu: typeof import('ant-design-vue/es')['Menu']
-    AMenuItem: typeof import('ant-design-vue/es')['MenuItem']
     Birth: typeof import('./src/components/birth.vue')['default']
     FadeInOut: typeof import('./src/components/fadeInOut.vue')['default']
     GverseCheckbox: typeof import('./src/components/gverseCheckbox.vue')['default']
     GverseLoginBtn: typeof import('./src/components/gverseLoginBtn.vue')['default']
     Live: typeof import('./src/components/home/live.vue')['default']
+    LiveChannel: typeof import('./src/components/liveChannel.vue')['default']
     LoginOrRegisterTitle: typeof import('./src/components/loginOrRegisterTitle.vue')['default']
     Menu: typeof import('./src/components/menu.vue')['default']
     MenuPoint: typeof import('./src/components/menuPoint.vue')['default']
@@ -33,6 +30,5 @@ declare module 'vue' {
     SendSmsCodeBtn: typeof import('./src/components/sendSmsCodeBtn.vue')['default']
     ThemeSelect: typeof import('./src/components/themeSelect.vue')['default']
     Topic: typeof import('./src/components/home/topic.vue')['default']
-    Versions: typeof import('./src/components/Versions.vue')['default']
   }
 }

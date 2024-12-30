@@ -41,7 +41,7 @@
 <script lang="ts" setup>
 import themeSelectDark from '@/assets/icons/menu/themeSelectDark.png'
 import themeSelectLight from '@/assets/icons/menu/themeSelectLight.png'
-import { useThemeStore } from '@/stroe/theme'
+import { useThemeStore } from '@/store/theme'
 const store = useThemeStore()
 const menu = ref(false)
 

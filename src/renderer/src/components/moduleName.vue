@@ -4,7 +4,7 @@
   </div>
 </template>
 <script lang="ts" setup>
-import { useThemeStore } from '@/stroe/theme'
+import { useThemeStore } from '@/store/theme'
 const themeStore = useThemeStore()
 interface propsType {
   label: string
